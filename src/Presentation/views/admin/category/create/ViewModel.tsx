@@ -21,11 +21,17 @@ export const AdminCategoryCreateViewModel = () => {
     }
 
     const createCategory = async () => {
-        setLoading(true);
-        const response = await create(values, file!)
-        setLoading(false);
-        setResponseMessage(response.message);
-        resetForm();
+        if(isValidForm()){
+            setLoading(true);
+            const response = await create(values, file!)
+            setLoading(false);
+            if(response.success){
+                setResponseMessage(response.message);
+                resetForm();
+            }else {
+                setResponseMessage(response.message);
+            }
+        }
     }
 
     const pickImage = async () => {
@@ -47,6 +53,22 @@ export const AdminCategoryCreateViewModel = () => {
             description: '',
             image: ''
         })
+    }
+
+    const isValidForm = (): boolean => {
+        if(values.name === ''){
+            setResponseMessage('Ingresa el nombre de la categoria');
+            return false;
+        }
+        if(values.description === ''){
+            setResponseMessage('Ingresa la descripcion de la categoria');
+            return false;
+        }
+        if(values.image === ''){
+            setResponseMessage("Seleccione una imagen");
+            return false;
+        }
+        return true;
     }
 
     return { ...values, onChange, pickImage, createCategory, loading, responseMessage }

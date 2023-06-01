@@ -23,9 +23,9 @@ export const HomeScreen = ({navigation, route}: Props) => {
     useEffect(() => {
       if (user?.idUsers !== null && user?.idUsers !== undefined && user?.idUsers !== ''){
         if(user.roles?.length! > 1){
-          navigation.replace('RolesScreen');
+          navigation.replace('AdminTabsNavigator');
         }else {
-          navigation.replace('ClientTabsNavigator');
+          navigation.replace('AdminTabsNavigator');
         }    
       }
     }, [user])

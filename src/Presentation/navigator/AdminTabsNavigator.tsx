@@ -27,7 +27,7 @@ export const AdminTabsNavigator = () => {
           )
           }
       )} 
-      />
+      />{/*
       <Tab.Screen 
         name="AdminOrderListScreen" 
         component={AdminOrderListScreen} 
@@ -38,7 +38,7 @@ export const AdminTabsNavigator = () => {
             <Image source={ require('../../../assets/orders.png') } style={{ width: 25, height: 25 }}/>
           )
          }} 
-      />
+      />*/}
       <Tab.Screen 
         name="ProfileInfoScreen" 
         component={ProfileInfoScreen}
